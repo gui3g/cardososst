@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardoso Segurança do Trabalho</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #ff6600;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --accent-color: #0099cc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 80px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random/1600x900/?safety,work') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #e65c00;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #777;
+        }
+        
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .about {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .testimonial-card p {
+            margin-bottom: 20px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .contact {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .contact-form .btn {
+            background: var(--secondary-color);
+        }
+        
+        .contact-info i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .contact-info div {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Ícones placeholder */
+        .icon {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .icon::before,
+        .icon::after {
+            content: "";
+            position: absolute;
+            background-color: white;
+        }
+        
+        .icon-helmet::before {
+            width: 40px;
+            height: 25px;
+            border-radius: 20px 20px 0 0;
+            top: 15px;
+            left: 12px;
+        }
+        
+        .icon-helmet::after {
+            width: 30px;
+            height: 10px;
+            bottom: 15px;
+            left: 17px;
+        }
+        
+        .icon-document::before {
+            width: 30px;
+            height: 40px;
+            top: 12px;
+            left: 17px;
+            border-radius: 5px;
+        }
+        
+        .icon-document::after {
+            width: 20px;
+            height: 2px;
+            top: 20px;
+            left: 22px;
+            box-shadow: 0 6px 0 white, 0 12px 0 white, 0 18px 0 white;
+        }
+        
+        .icon-training::before {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: 10px;
+            left: 22px;
+        }
+        
+        .icon-training::after {
+            width: 30px;
+            height: 15px;
+            border-radius: 5px;
+            bottom: 15px;
+            left: 17px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="Logotipo_Modelo 5.png" alt="Cardoso Segurança do Trabalho" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Proteção e Segurança para seu Ambiente de Trabalho</h1>
+            <p>Soluções completas em segurança do trabalho, treinamentos e consultoria especializada para sua empresa.</p>
+            <a href="#contact" class="btn">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Conheça as soluções que oferecemos para garantir a segurança no seu ambiente de trabalho</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon icon-helmet"></div>
+                    <h3>Análise de Riscos</h3>
+                    <p>Identificação e avaliação de riscos ocupacionais com elaboração de relatórios técnicos e recomendações de melhorias.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon icon-document"></div>
+                    <h3>Documentação Legal</h3>
+                    <p>Elaboração de programas obrigatórios como PCMSO, PGR, LTCAT e outros documentos exigidos pela legislação.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon icon-training"></div>
+                    <h3>Treinamentos</h3>
+                    <p>Capacitação de equipes em NRs, primeiros socorros, brigada de incêndio e outros temas relacionados à segurança.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a história e valores da Cardoso Segurança do Trabalho</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://source.unsplash.com/random/600x400/?safety,team" alt="Equipe Cardoso">
+                </div>
+                <div class="about-text">
+                    <h3>Nossa Missão</h3>
+                    <p>Promover a cultura de segurança e saúde no trabalho, contribuindo para ambientes mais seguros e produtivos através de soluções personalizadas e atendimento de excelência.</p>
+                    <p>Com mais de 10 anos de experiência no mercado, contamos com uma equipe multidisciplinar de profissionais altamente qualificados, incluindo engenheiros de segurança, técnicos em segurança do trabalho, médicos e enfermeiros do trabalho.</p>
+                    <p>Nosso compromisso é oferecer serviços de alta qualidade que atendam às necessidades específicas de cada cliente, garantindo conformidade legal e um ambiente de trabalho mais seguro e saudável.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Depoimentos</h2>
+                <p>Veja o que nossos clientes dizem sobre nossos serviços</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"A equipe da Cardoso foi extremamente profissional e atenciosa. Os treinamentos realizados tiveram um impacto positivo significativo na conscientização dos nossos colaboradores."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                        <div>
+                            <h4>Roberto Silva</h4>
+                            <p>Diretor Industrial - Empresa ABC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Graças à consultoria da Cardoso, conseguimos reduzir o número de acidentes em mais de 70%. O retorno sobre o investimento foi extraordinário."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+                        <div>
+                            <h4>Patrícia Mendes</h4>
+                            <p>Gerente de RH - Indústria XYZ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A documentação entregue pela Cardoso foi impecável e nos ajudou a passar por uma fiscalização sem nenhuma não conformidade. Recomendo fortemente."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Cliente">
+                        <div>
+                            <h4>Carlos Eduardo</h4>
+                            <p>Proprietário - Empresa QWE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para atender sua empresa</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Nome" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Telefone">
+                        <input type="text" placeholder="Empresa">
+                        <textarea rows="5" placeholder="Mensagem" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div>
+                        <i class="icon">📍</i>
+                        <p>Rua Exemplo, 123 - Bairro, Cidade - UF</p>
+                    </div>
+                    <div>
+                        <i class="icon">📞</i>
+                        <p>(00) 0000-0000</p>
+                    </div>
+                    <div>
+                        <i class="icon">📧</i>
+                        <p>contato@cardososeguranca.com.br</p>
+                    </div>
+                    <div>
+                        <i class="icon">⏰</i>
+                        <p>Segunda a Sexta: 8h às 18h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cardoso Segurança do Trabalho. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
