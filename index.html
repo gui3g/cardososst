@@ -6,11 +6,18 @@
     <title>Cardoso Segurança do Trabalho</title>
     <style>
         :root {
-            --primary-color: #003366;
-            --secondary-color: #ff6600;
-            --light-color: #f5f5f5;
-            --dark-color: #333333;
-            --accent-color: #0099cc;
+            --primary-color: #038e3c;
+            --secondary-color: #242c30;
+            --accent-color: #038e3c;
+            --light-color: #e0e0e0;
+            --dark-color: #242c30;
+            --text-color: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #038e3c, #026a2e, #04a347);
+            --gradient-secondary: linear-gradient(135deg, #242c30, #1a1f22);
+            --gradient-luxury: linear-gradient(135deg, #038e3c 0%, #04a347 25%, #026a2e 50%, #038e3c 75%, #04a347 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            --shadow-luxury: 0 25px 50px rgba(3, 142, 60, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 35px 70px rgba(3, 142, 60, 0.25), 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         * {
@@ -21,9 +28,23 @@
         }
         
         body {
-            background-color: var(--light-color);
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 50%, #f0fdf4 100%);
             color: var(--dark-color);
             line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(3, 142, 60, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(4, 163, 71, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
         
         .container {
@@ -33,13 +54,13 @@
         }
         
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 0;
+            background: #242c30;
+            backdrop-filter: blur(10px);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -49,7 +70,9 @@
         }
         
         .logo {
-            height: 80px;
+            height: 90px;
+            width: auto;
+            max-width: 300px;
         }
         
         nav ul {
@@ -62,24 +85,41 @@
         }
         
         nav ul li a {
+            color: var(--light-color);
             text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 500;
             transition: color 0.3s;
         }
         
         nav ul li a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .curso-online-btn {
+            background: var(--gradient-primary) !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            box-shadow: 0 2px 10px rgba(3, 142, 60, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .curso-online-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(3, 142, 60, 0.5) !important;
+            background: linear-gradient(135deg, #026a2e, #038e3c) !important;
         }
         
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random/1600x900/?safety,work') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             padding-top: 80px;
+            position: relative;
         }
         
         .hero-content {
@@ -99,24 +139,33 @@
         
         .btn {
             display: inline-block;
-            background: var(--secondary-color);
-            color: white;
+            background: var(--gradient-primary);
+            color: var(--light-color);
             padding: 12px 30px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
         .btn:hover {
-            background: #e65c00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #026a2e, #038e3c);
         }
         
         section {
             padding: 80px 0;
+        }
+
+        .contact {
+            padding: 50px 0 !important;
+        }
+
+        .about {
+            padding: 60px 0 !important;
         }
         
         .section-title {
@@ -135,7 +184,20 @@
         }
         
         .services {
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23038e3c" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            pointer-events: none;
         }
         
         .services-grid {
@@ -145,22 +207,96 @@
         }
         
         .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(145deg, #ffffff, #f8fffe);
+            padding: 45px 35px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-luxury);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-glass);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(3, 142, 60, 0.05), transparent);
+            opacity: 0;
+            transition: all 0.8s ease;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: var(--shadow-hover);
+            border: 2px solid rgba(3, 142, 60, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
         }
         
-        .service-card i {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
+        .service-card .icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-luxury);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            position: relative;
+            transition: all 0.6s ease;
+            box-shadow: 0 15px 35px rgba(3, 142, 60, 0.3);
+        }
+
+        .service-card .icon::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px solid rgba(3, 142, 60, 0.2);
+            border-radius: 50%;
+            top: -10%;
+            left: -10%;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .service-card:hover .icon {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 25px 50px rgba(3, 142, 60, 0.4);
+        }
+
+        .service-card:hover .icon::before {
+            opacity: 1;
+            transform: scale(1.1);
         }
         
         .service-card h3 {
@@ -224,14 +360,88 @@
         }
         
         .contact {
-            background-color: var(--primary-color);
+            background: #242c30;
             color: white;
         }
         
         .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .contact-item.clickable:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .phone-number {
+            cursor: pointer;
+            user-select: all;
+        }
+
+        .phone-number:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item .icon {
+            margin: 0 auto 12px auto;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            background-color: var(--primary-color);
+        }
+
+        .contact-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .contact-item p {
+            line-height: 1.4;
+            font-size: 0.9rem;
         }
         
         .contact-form input,
@@ -247,21 +457,137 @@
             background: var(--secondary-color);
         }
         
-        .contact-info i {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-right: 10px;
-        }
-        
         .contact-info div {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info .icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .contact-info .icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: white;
+        }
+
+        .contact-info .icon.location::before {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .contact-info .icon.phone::before {
+            border-radius: 3px;
+        }
+
+        .contact-info .icon.email::before {
+            clip-path: polygon(0% 20%, 50% 50%, 100% 20%, 100% 80%, 0% 80%);
+        }
+
+        .contact-info .icon.time::before {
+            border-radius: 50%;
+            border: 2px solid white;
+            background: transparent;
+        }
+
+        .contact-info .icon.whatsapp::before {
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        /* Ícones melhorados */
+        .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 24px;
+            color: white;
+        }
+
+        .icon.location {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png');
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icon.location::before {
+            content: '';
+            background: none;
+            width: auto;
+            height: auto;
+            clip-path: none;
+        }
+
+        .icon.phone {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/6144/6144008.png');
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icon.phone::before {
+            content: '';
+            background: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+        }
+
+        .icon.whatsapp {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/174/174879.png');
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icon.whatsapp::before {
+            content: '';
+            background: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+        }
+
+        .icon.time::before {
+            content: '🕒';
+            background: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            border: none;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 30px;
         }
         
         footer {
-            background-color: var(--dark-color);
-            color: white;
+            background: var(--dark-color);
+            color: var(--light-color);
             text-align: center;
-            padding: 20px 0;
+            padding: 30px 0;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
         }
         
         @media (max-width: 768px) {
@@ -287,7 +613,7 @@
             display: inline-block;
             width: 64px;
             height: 64px;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             border-radius: 50%;
             margin-bottom: 20px;
             position: relative;
@@ -346,19 +672,550 @@
             bottom: 15px;
             left: 17px;
         }
+
+        .training {
+            background: linear-gradient(135deg, #f0fdf4 0%, #f8fffe 50%, #ecfdf5 100%);
+            position: relative;
+        }
+
+        .training::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(3, 142, 60, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .training-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .training-card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(3, 142, 60, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .training-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(3, 142, 60, 0.1);
+            border-color: rgba(3, 142, 60, 0.2);
+        }
+
+        .training-card:hover::after {
+            opacity: 1;
+            top: -50%;
+            left: -50%;
+        }
+
+        .training-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .training-card h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 1px;
+        }
+
+        .training-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .documents {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+            position: relative;
+        }
+
+        .documents::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(4, 163, 71, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .document-card {
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            padding: 35px;
+            border-radius: 18px;
+            border-left: 6px solid var(--secondary-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(36, 44, 48, 0.1), transparent);
+            border-radius: 0 18px 0 60px;
+        }
+
+        .document-card:hover {
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-left-color: var(--primary-color);
+        }
+
+        .document-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .document-card .acronym {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .norms {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #f8fffe 100%);
+            position: relative;
+        }
+
+        .norms::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(3, 142, 60, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .norms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .norm-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .norm-card:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .norm-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .norm-card:hover .norm-number {
+            color: var(--secondary-color);
+        }
+
+        .norm-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .clients {
+            background-color: white;
+            padding: 60px 0;
+        }
+
+        .clients-carousel {
+            overflow: hidden;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .clients-track {
+            display: flex;
+            animation: scroll 60s linear infinite;
+            gap: 60px;
+            align-items: center;
+            width: calc(32 * (200px + 60px));
+        }
+
+        .client-logo {
+            flex: 0 0 auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            min-width: 200px;
+        }
+
+        .client-logo:has(.client-name) {
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .client-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .client-logo img {
+            max-height: 60px;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
+        .client-logo a[href*="havan"] img {
+            background-color: #0c3bdd !important;
+            padding: 15px !important;
+            border-radius: 8px !important;
+            width: 150px !important;
+            height: auto !important;
+        }
+
+        .client-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            background: var(--gradient-primary);
+            padding: 0;
+            margin: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(3, 142, 60, 0.3);
+            transition: all 0.3s ease;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .client-name:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(3, 142, 60, 0.4);
+            background: linear-gradient(135deg, #026a2e, #038e3c, #04a347);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Divisor decorativo */
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 30px auto;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: -2px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: -2px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Estilos para os cards de Missão, Visão e Valores */
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mvv-card {
+            background: linear-gradient(145deg, #ffffff, #f8fffe, #ffffff);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-luxury);
+            text-align: center;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--gradient-luxury);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .mvv-card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: conic-gradient(from 45deg, rgba(3, 142, 60, 0.08), transparent, rgba(4, 163, 71, 0.08), transparent);
+            opacity: 0;
+            transition: all 0.8s ease;
+            animation: rotateGlow 15s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-25px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(3, 142, 60, 0.4);
+        }
+
+        .mvv-card:hover::after {
+            opacity: 1;
+            top: -50%;
+            left: -50%;
+        }
+
+        .mvv-card .icon-mvv {
+            width: 110px;
+            height: 110px;
+            background: var(--gradient-luxury);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            font-size: 3.2rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(3, 142, 60, 0.5);
+            position: relative;
+            transition: all 0.6s ease;
+        }
+
+        .mvv-card:hover .icon-mvv {
+            transform: scale(1.2) rotate(15deg);
+            box-shadow: 0 30px 60px rgba(3, 142, 60, 0.6);
+        }
+
+        .mvv-card .icon-mvv::before {
+            content: '';
+            position: absolute;
+            width: 130%;
+            height: 130%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            top: -15%;
+            left: -15%;
+            opacity: 0;
+            transition: all 0.6s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mvv-card:hover .icon-mvv::before {
+            opacity: 1;
+            transform: rotate(-15deg);
+        }
+
+        .mvv-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .mvv-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .mvv-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .mvv-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0 0;
+        }
+
+        .mvv-card ul li {
+            color: #555;
+            margin-bottom: 15px;
+            padding: 8px 0 8px 35px;
+            position: relative;
+            text-align: left;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mvv-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: white;
+            background: var(--primary-color);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 8px rgba(3, 142, 60, 0.3);
+        }
+
+        .mvv-card ul li:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .mvv-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .mvv-card {
+                padding: 30px 20px;
+            }
+            
+            .mvv-card .icon-mvv {
+                width: 75px;
+                height: 75px;
+                font-size: 2.3rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <img src="Logotipo_Modelo 5.png" alt="Cardoso Segurança do Trabalho" class="logo">
+            <a href="#home"><img src="Logotipo.png" alt="Cardoso Segurança do Trabalho" class="logo"></a>
             <nav>
                 <ul>
-                    <li><a href="#home">Início</a></li>
                     <li><a href="#services">Serviços</a></li>
+                    <li><a href="#clients">Clientes</a></li>
+                    <li><a href="#documents">Documentos</a></li>
+                    <li><a href="#norms">Normas (NRs)</a></li>
                     <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#testimonials">Depoimentos</a></li>
                     <li><a href="#contact">Contato</a></li>
+                    <li><a href="https://clinica.esocialbrasil.com.br/login" target="_blank" class="curso-online-btn">Curso Online</a></li>
                 </ul>
             </nav>
         </div>
@@ -380,19 +1237,208 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="icon icon-helmet"></div>
+                    <div class="icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2910/2910791.png'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
                     <h3>Análise de Riscos</h3>
                     <p>Identificação e avaliação de riscos ocupacionais com elaboração de relatórios técnicos e recomendações de melhorias.</p>
                 </div>
                 <div class="service-card">
-                    <div class="icon icon-document"></div>
+                    <div class="icon" style="background-image: url('https://png.pngtree.com/png-clipart/20190630/original/pngtree-vector-documentation-icon-png-image_4171285.jpg'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
                     <h3>Documentação Legal</h3>
                     <p>Elaboração de programas obrigatórios como PCMSO, PGR, LTCAT e outros documentos exigidos pela legislação.</p>
                 </div>
                 <div class="service-card">
-                    <div class="icon icon-training"></div>
+                    <div class="icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/6426/6426965.png'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
                     <h3>Treinamentos</h3>
                     <p>Capacitação de equipes em NRs, primeiros socorros, brigada de incêndio e outros temas relacionados à segurança.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="training" class="training">
+        <div class="container">
+            <div class="section-title">
+                <h2>Treinamentos Especializados</h2>
+                <p>Capacitação profissional em segurança do trabalho com certificação reconhecida</p>
+            </div>
+            <div class="training-grid">
+                <div class="training-card">
+                    <h4>NR-01 - Disposições Gerais</h4>
+                    <p>Fundamentos da segurança e saúde no trabalho, responsabilidades e diretrizes básicas.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-05 - CIPA</h4>
+                    <p>Formação de membros da Comissão Interna de Prevenção de Acidentes.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-06 - EPI</h4>
+                    <p>Uso correto de Equipamentos de Proteção Individual e suas aplicações.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-10 - Segurança em Eletricidade</h4>
+                    <p>Prevenção de acidentes com energia elétrica em instalações e serviços.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-11 - Transporte e Movimentação</h4>
+                    <p>Segurança na operação de equipamentos de transporte e elevação de materiais.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-12 - Segurança em Máquinas</h4>
+                    <p>Proteções e dispositivos de segurança em máquinas e equipamentos.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-13 - Caldeiras e Vasos de Pressão</h4>
+                    <p>Operação segura de caldeiras, vasos de pressão e tubulações.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-17 - Ergonomia</h4>
+                    <p>Adaptação das condições de trabalho às características psicofisiológicas dos trabalhadores.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-18 - Construção Civil</h4>
+                    <p>Condições de segurança e saúde no trabalho na indústria da construção.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-20 - Combustíveis e Inflamáveis</h4>
+                    <p>Segurança e saúde no trabalho com inflamáveis e combustíveis.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-33 - Espaços Confinados</h4>
+                    <p>Reconhecimento, avaliação e controle de riscos em espaços confinados.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-34 - Trabalho a Quente</h4>
+                    <p>Condições de segurança para trabalhos de soldagem, corte e similares.</p>
+                </div>
+                <div class="training-card">
+                    <h4>NR-35 - Trabalho em Altura</h4>
+                    <p>Planejamento, organização e execução de trabalhos em altura.</p>
+                </div>
+                <div class="training-card">
+                    <h4>Brigada de Emergência</h4>
+                    <p>Formação de brigadistas para prevenção e combate a princípios de incêndio.</p>
+                </div>
+                <div class="training-card">
+                    <h4>Primeiros Socorros</h4>
+                    <p>Técnicas de atendimento emergencial e suporte básico de vida.</p>
+                </div>
+                <div class="training-card">
+                    <h4>Direção Defensiva</h4>
+                    <p>Técnicas de condução segura e prevenção de acidentes de trânsito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documents" class="documents">
+        <div class="container">
+            <div class="section-title">
+                <h2>Documentos Técnicos Obrigatórios</h2>
+                <p>Elaboração de toda documentação exigida pela legislação trabalhista</p>
+            </div>
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="acronym">PGR</div>
+                    <h4>Programa de Gerenciamento de Riscos</h4>
+                    <p>Antecipação, reconhecimento, avaliação e controle dos riscos ambientais presentes nos locais de trabalho.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">PCMSO</div>
+                    <h4>Programa de Controle Médico de Saúde Ocupacional</h4>
+                    <p>Promoção e preservação da saúde dos trabalhadores através de exames médicos ocupacionais.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">LTCAT</div>
+                    <h4>Laudo Técnico das Condições Ambientais de Trabalho</h4>
+                    <p>Caracterização das condições ambientais de trabalho para fins previdenciários.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">LTIP</div>
+                    <h4>Laudo Técnico de Insalubridade e Periculosidade</h4>
+                    <p>Avaliação quantitativa e qualitativa dos agentes nocivos presentes no ambiente laboral.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">PPCI</div>
+                    <h4>Projeto de Prevenção e Combate a Incêndios</h4>
+                    <p>Medidas de segurança contra incêndio e pânico em edificações e áreas de risco.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">CB</div>
+                    <h4>Memorial Simplificado</h4>
+                    <p>Documento técnico com descrição das condições de trabalho e medidas de controle implementadas.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">DIR</div>
+                    <h4>Declaração de Inexistência de Riscos</h4>
+                    <p>Atestado técnico para atividades sem exposição a agentes nocivos à saúde.</p>
+                </div>
+                <div class="document-card">
+                    <div class="acronym">AET</div>
+                    <h4>Análise Ergonômica do Trabalho</h4>
+                    <p>Estudo das condições de trabalho para adequação ergonômica dos postos de trabalho.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="norms" class="norms">
+        <div class="container">
+            <div class="section-title">
+                <h2>Normas Regulamentadoras (NRs)</h2>
+                <p>Especialização em todas as normas de segurança e saúde no trabalho</p>
+            </div>
+            <div class="norms-grid">
+                <div class="norm-card">
+                    <div class="norm-number">NR-01</div>
+                    <div class="norm-title">Disposições Gerais</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-05</div>
+                    <div class="norm-title">CIPA</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-06</div>
+                    <div class="norm-title">EPI</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-10</div>
+                    <div class="norm-title">Segurança em Eletricidade</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-11</div>
+                    <div class="norm-title">Transporte e Movimentação</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-12</div>
+                    <div class="norm-title">Segurança em Máquinas</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-13</div>
+                    <div class="norm-title">Caldeiras e Vasos</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-17</div>
+                    <div class="norm-title">Ergonomia</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-18</div>
+                    <div class="norm-title">Construção Civil</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-20</div>
+                    <div class="norm-title">Combustíveis</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-33</div>
+                    <div class="norm-title">Espaços Confinados</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-34</div>
+                    <div class="norm-title">Trabalho a Quente</div>
+                </div>
+                <div class="norm-card">
+                    <div class="norm-number">NR-35</div>
+                    <div class="norm-title">Trabalho em Altura</div>
                 </div>
             </div>
         </div>
@@ -402,57 +1448,185 @@
         <div class="container">
             <div class="section-title">
                 <h2>Sobre Nós</h2>
-                <p>Conheça a história e valores da Cardoso Segurança do Trabalho</p>
+                <p>Conheça nossa missão, visão e valores que guiam nosso trabalho</p>
+                <div class="section-divider"></div>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://source.unsplash.com/random/600x400/?safety,team" alt="Equipe Cardoso">
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="icon-mvv" style="background-image: url('https://cdn-icons-png.flaticon.com/512/1628/1628579.png'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
+                    <h3>Missão</h3>
+                    <p>Nossa missão é executar um trabalho onde nossos clientes tenham a tranquilidade, confiança e a garantia de um trabalho executado com seriedade, honestidade e uma excelente estrutura para melhor atender, visando garantir a saúde e segurança, e uma melhor qualidade de vida para a empresa e de seus colaboradores.</p>
                 </div>
-                <div class="about-text">
-                    <h3>Nossa Missão</h3>
-                    <p>Promover a cultura de segurança e saúde no trabalho, contribuindo para ambientes mais seguros e produtivos através de soluções personalizadas e atendimento de excelência.</p>
-                    <p>Com mais de 10 anos de experiência no mercado, contamos com uma equipe multidisciplinar de profissionais altamente qualificados, incluindo engenheiros de segurança, técnicos em segurança do trabalho, médicos e enfermeiros do trabalho.</p>
-                    <p>Nosso compromisso é oferecer serviços de alta qualidade que atendam às necessidades específicas de cada cliente, garantindo conformidade legal e um ambiente de trabalho mais seguro e saudável.</p>
+                <div class="mvv-card">
+                    <div class="icon-mvv" style="background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/23794443-o-negocio-ideia-icone-ilustracao-luz-lampada-icone-icone-relacionado-para-criativo-ideia-alvo-visao-missao-linha-icone-estilo-simples-projeto-editavel-vetor.jpg'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
+                    <h3>Visão</h3>
+                    <p>Ter uma estrutura completa em todo o processo de segurança do trabalho, trazendo para nossos clientes praticidade, conforto, tranquilidade e satisfação.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="icon-mvv" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2608/2608287.png'); background-size: 60px 60px; background-repeat: no-repeat; background-position: center;"></div>
+                    <h3>Valores</h3>
+                    <ul>
+                        <li>Segurança</li>
+                        <li>Inovação</li>
+                        <li>Integridade</li>
+                        <li>Responsabilidade</li>
+                        <li>Colaboração</li>
+                        <li>Diversidade</li>
+                        <li>Qualidade</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" class="testimonials">
+    <section id="clients" class="clients">
         <div class="container">
             <div class="section-title">
-                <h2>Depoimentos</h2>
-                <p>Veja o que nossos clientes dizem sobre nossos serviços</p>
+                <h2>Nossos Clientes</h2>
+                <p>Empresas que confiam na Cardoso Segurança do Trabalho</p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"A equipe da Cardoso foi extremamente profissional e atenciosa. Os treinamentos realizados tiveram um impacto positivo significativo na conscientização dos nossos colaboradores."</p>
-                    <div class="client-info">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
-                        <div>
-                            <h4>Roberto Silva</h4>
-                            <p>Diretor Industrial - Empresa ABC</p>
-                        </div>
+            <div class="clients-carousel">
+                <div class="clients-track">
+                    <div class="client-logo">
+                        <a href="https://www.havan.com.br/" target="_blank">
+                            <img src="https://www.havan.com.br/static/version1755891299/frontend/Havan/themeDefault/pt_BR/images/svg/logo-havan-slim-w.svg" alt="Havan">
+                        </a>
                     </div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Graças à consultoria da Cardoso, conseguimos reduzir o número de acidentes em mais de 70%. O retorno sobre o investimento foi extraordinário."</p>
-                    <div class="client-info">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
-                        <div>
-                            <h4>Patrícia Mendes</h4>
-                            <p>Gerente de RH - Indústria XYZ</p>
-                        </div>
+                    <div class="client-logo">
+                        <a href="https://www.cvale.com.br/site" target="_blank">
+                            <img src="https://www.cvale.com.br/site/web-files/imagens/logos/logo.png" alt="C.Vale">
+                        </a>
                     </div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"A documentação entregue pela Cardoso foi impecável e nos ajudou a passar por uma fiscalização sem nenhuma não conformidade. Recomendo fortemente."</p>
-                    <div class="client-info">
-                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Cliente">
-                        <div>
-                            <h4>Carlos Eduardo</h4>
-                            <p>Proprietário - Empresa QWE</p>
-                        </div>
+                    <div class="client-logo">
+                        <a href="https://www.redealta.com.br/" target="_blank">
+                            <img src="https://www.redealta.com.br/site/img/logotopo.png" alt="Rede Alta">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.lactobom.com.br/" target="_blank">
+                            <img src="https://www.lactobom.com.br/site/img/logotopo.png" alt="Lactobom">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.rawiobrasindustriais.com.br/" target="_blank">
+                            <img src="https://www.rawiobrasindustriais.com.br/img/logotopo.png" alt="Rawi">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://agroceresmultimix.com.br/" target="_blank">
+                            <img src="https://agroceresmultimix.com.br/public/images/svgs/logo.svg" alt="Agroceres">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.schemaq.com.br/" target="_blank">
+                            <img src="https://www.schemaq.com.br/wp-content/uploads/2022/02/logo-schemaq-verde-e-preto-300x37.png" alt="Schemaq">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.forxpecas.com.br/" target="_blank">
+                            <img src="https://www.forxpecas.com.br/webfiles/img/logotipo.png" alt="Forx">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://doisirmaos.ind.br/" target="_blank">
+                            <img src="https://doisirmaos.ind.br/images/bg_topo_home4.jpg" alt="Grupo 2 Irmãos Pré Moldados">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.facebook.com/TornoPietrobelli/" target="_blank">
+                            <img src="https://scontent.ftow4-1.fna.fbcdn.net/v/t39.30808-1/406622538_873611521432142_5470215493173287152_n.jpg?stp=c142.142.1764.1764a_dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=njgh_GI_ucsQ7kNvwHTngee&_nc_oc=AdlxaCr5pflhtdn8R2twujU7uxQLKrVQvjjFsQyk8odQXIlbbi8_bqgDmNapYlT6cGc&_nc_zt=24&_nc_ht=scontent.ftow4-1.fna&_nc_gid=sHuy1GhFblPhlukEV8lrqA&oh=00_Afb4gD6fvkQDZQ4Id1eaQ2P-lPQTsLjRDcVPWxdsYUxXig&oe=68BD4264" alt="Tornearia Pietrobielle">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaironhealth.com.br/" target="_blank">
+                            <img src="https://academiaironhealth.com.br/wp-content/uploads/2019/05/logo-marca-IRON-Health-Academia-Toledo-PR-1.png" alt="Academia Iron">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaaquafit.com.br/" target="_blank">
+                            <img src="https://academiaaquafit.com.br/wp-content/uploads/2018/01/AQUAFIT-Nata_C3_A7_C3_A3o-Hidrogin_C3_A1stica-e-Ac.png" alt="Academia Aquafit">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaindside.com.br/" target="_blank">
+                            <img src="https://academiaindside.com.br/wp-content/uploads/2016/10/ind_logo_retina_branco.png" alt="Academia Indside">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaeleven.com.br/" target="_blank">
+                            <img src="https://academiaeleven.com.br/wp-content/uploads/2025/08/Design-sem-nome-5-768x284.png" alt="Academia Elevem">
+                        </a>
+                    </div>
+                    <!-- Duplicação para efeito de scroll contínuo -->
+                    <div class="client-logo">
+                        <a href="https://www.havan.com.br/" target="_blank">
+                            <img src="https://www.havan.com.br/static/version1755891299/frontend/Havan/themeDefault/pt_BR/images/svg/logo-havan-slim-w.svg" alt="Havan">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.cvale.com.br/site" target="_blank">
+                            <img src="https://www.cvale.com.br/site/web-files/imagens/logos/logo.png" alt="C.Vale">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.redealta.com.br/" target="_blank">
+                            <img src="https://www.redealta.com.br/site/img/logotopo.png" alt="Rede Alta">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.lactobom.com.br/" target="_blank">
+                            <img src="https://www.lactobom.com.br/site/img/logotopo.png" alt="Lactobom">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.rawiobrasindustriais.com.br/" target="_blank">
+                            <img src="https://www.rawiobrasindustriais.com.br/img/logotopo.png" alt="Rawi">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://agroceresmultimix.com.br/" target="_blank">
+                            <img src="https://agroceresmultimix.com.br/public/images/svgs/logo.svg" alt="Agroceres">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.schemaq.com.br/" target="_blank">
+                            <img src="https://www.schemaq.com.br/wp-content/uploads/2022/02/logo-schemaq-verde-e-preto-300x37.png" alt="Schemaq">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.forxpecas.com.br/" target="_blank">
+                            <img src="https://www.forxpecas.com.br/webfiles/img/logotipo.png" alt="Forx">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://doisirmaos.ind.br/" target="_blank">
+                            <img src="https://doisirmaos.ind.br/images/bg_topo_home4.jpg" alt="Grupo 2 Irmãos Pré Moldados">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://www.facebook.com/TornoPietrobelli/" target="_blank">
+                            <img src="https://scontent.ftow4-1.fna.fbcdn.net/v/t39.30808-1/406622538_873611521432142_5470215493173287152_n.jpg?stp=c142.142.1764.1764a_dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=njgh_GI_ucsQ7kNvwHTngee&_nc_oc=AdlxaCr5pflhtdn8R2twujU7uxQLKrVQvjjFsQyk8odQXIlbbi8_bqgDmNapYlT6cGc&_nc_zt=24&_nc_ht=scontent.ftow4-1.fna&_nc_gid=sHuy1GhFblPhlukEV8lrqA&oh=00_Afb4gD6fvkQDZQ4Id1eaQ2P-lPQTsLjRDcVPWxdsYUxXig&oe=68BD4264" alt="Tornearia Pietrobielle">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaironhealth.com.br/" target="_blank">
+                            <img src="https://academiaironhealth.com.br/wp-content/uploads/2019/05/logo-marca-IRON-Health-Academia-Toledo-PR-1.png" alt="Academia Iron">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaaquafit.com.br/" target="_blank">
+                            <img src="https://academiaaquafit.com.br/wp-content/uploads/2018/01/AQUAFIT-Nata_C3_A7_C3_A3o-Hidrogin_C3_A1stica-e-Ac.png" alt="Academia Aquafit">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaindside.com.br/" target="_blank">
+                            <img src="https://academiaindside.com.br/wp-content/uploads/2016/10/ind_logo_retina_branco.png" alt="Academia Indside">
+                        </a>
+                    </div>
+                    <div class="client-logo">
+                        <a href="https://academiaeleven.com.br/" target="_blank">
+                            <img src="https://academiaeleven.com.br/wp-content/uploads/2025/08/Design-sem-nome-5-768x284.png" alt="Academia Elevem">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -466,33 +1640,34 @@
                 <p>Estamos prontos para atender sua empresa</p>
             </div>
             <div class="contact-content">
-                <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Nome" required>
-                        <input type="email" placeholder="Email" required>
-                        <input type="tel" placeholder="Telefone">
-                        <input type="text" placeholder="Empresa">
-                        <textarea rows="5" placeholder="Mensagem" required></textarea>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Informações de Contato</h3>
-                    <div>
-                        <i class="icon">📍</i>
-                        <p>Rua Exemplo, 123 - Bairro, Cidade - UF</p>
+                <div class="contact-info-grid">
+                    <div class="contact-item clickable" onclick="window.open('https://www.google.com/maps/place/Cardoso+Gest%C3%A3o+em+Seguran%C3%A7a+do+Trabalho/@-24.7124019,-53.7420278,17z/data=!3m1!4b1!4m6!3m5!1s0x94f395d558b9d7a5:0x771826a03281f49e!8m2!3d-24.7124068!4d-53.7394529!16s%2Fg%2F11h6rrgjr8?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D', '_blank')">
+                        <div class="icon location"></div>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>R. Santo Campagnolo, 2206<br>Toledo - PR</p>
+                        </div>
                     </div>
-                    <div>
-                        <i class="icon">📞</i>
-                        <p>(00) 0000-0000</p>
+                    <div class="contact-item" onclick="copyToClipboard('(45) 99950-9579')">
+                        <div class="icon phone"></div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p class="phone-number">(45) 99950-9579</p>
+                        </div>
                     </div>
-                    <div>
-                        <i class="icon">📧</i>
-                        <p>contato@cardososeguranca.com.br</p>
+                    <div class="contact-item clickable" onclick="window.open('https://api.whatsapp.com/send/?phone=554520322818&text=Cardoso&type=phone_number&app_absent=0', '_blank')">
+                        <div class="icon whatsapp"></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>(45) 2032-2818</p>
+                        </div>
                     </div>
-                    <div>
-                        <i class="icon">⏰</i>
-                        <p>Segunda a Sexta: 8h às 18h</p>
+                    <div class="contact-item">
+                        <div class="icon time"></div>
+                        <div>
+                            <h4>Horário</h4>
+                            <p>Segunda a Sexta<br>8h às 18h30</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -504,5 +1679,34 @@
             <p>&copy; 2025 Cardoso Segurança do Trabalho. Todos os direitos reservados.</p>
         </div>
     </footer>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Criar notificação visual
+                const notification = document.createElement('div');
+                notification.textContent = 'Número copiado!';
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--primary-color);
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    z-index: 9999;
+                    font-weight: bold;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                `;
+                document.body.appendChild(notification);
+                
+                // Remover após 2 segundos
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
