@@ -129,7 +129,7 @@
         }
         
         .page-title p {
-            color: #777;
+            color: #333;
             font-size: 1.2rem;
         }
 
@@ -141,8 +141,8 @@
         }
 
         .client-card {
-            background: linear-gradient(145deg, #ffffff, #f8fffe);
-            padding: 40px 30px;
+            background: #ffffff;
+            padding: 30px 20px;
             border-radius: 25px;
             box-shadow: var(--shadow-luxury);
             text-align: center;
@@ -150,6 +150,7 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .client-card::before {
@@ -175,14 +176,14 @@
         }
 
         .client-logo-container {
-            height: 120px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            background: var(--light-color);
+            margin-bottom: 15px;
+            background: transparent;
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             position: relative;
             z-index: 1;
         }
@@ -191,6 +192,11 @@
             max-height: 80px;
             max-width: 100%;
             object-fit: contain;
+        }
+
+        .client-logo-container img[src*="academia-ind-side.png"] {
+            max-height: 80px;
+            width: auto;
         }
 
         .client-logo-container.havan {
@@ -202,18 +208,10 @@
         }
 
         .client-name-display {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .client-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            margin-bottom: 0;
             position: relative;
             z-index: 1;
         }
@@ -314,76 +312,67 @@
 
             <div class="clients-grid">
                 <!-- Clientes com logos online -->
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.havan.com.br/', '_blank')">
                     <div class="client-logo-container havan">
                         <img src="https://www.havan.com.br/static/version1755891299/frontend/Havan/themeDefault/pt_BR/images/svg/logo-havan-slim-w.svg" alt="Havan">
                     </div>
                     <div class="client-name-display">Havan</div>
-                    <div class="client-description">Rede de lojas de departamento com presença nacional</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.cvale.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.cvale.com.br/site/web-files/imagens/logos/logo.png" alt="C.Vale">
                     </div>
                     <div class="client-name-display">C.Vale</div>
-                    <div class="client-description">Cooperativa agroindustrial</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.redealta.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.redealta.com.br/site/img/logotopo.png" alt="Rede Alta">
                     </div>
                     <div class="client-name-display">Rede Alta</div>
-                    <div class="client-description">Rede de supermercados</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.lactobom.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.lactobom.com.br/site/img/logotopo.png" alt="Lactobom">
                     </div>
                     <div class="client-name-display">Lactobom</div>
-                    <div class="client-description">Indústria de laticínios</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.rawiobrasindustriais.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.rawiobrasindustriais.com.br/img/logotopo.png" alt="Rawi">
                     </div>
                     <div class="client-name-display">Rawi Obras Industriais</div>
-                    <div class="client-description">Construção e obras industriais</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://agroceresmultimix.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://agroceresmultimix.com.br/public/images/svgs/logo.svg" alt="Agroceres">
                     </div>
                     <div class="client-name-display">Agroceres Multimix</div>
-                    <div class="client-description">Nutrição animal</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.schemaq.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.schemaq.com.br/wp-content/uploads/2022/02/logo-schemaq-verde-e-preto-300x37.png" alt="Schemaq">
                     </div>
                     <div class="client-name-display">Schemaq</div>
-                    <div class="client-description">Equipamentos industriais</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.forxpecas.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://www.forxpecas.com.br/webfiles/img/logotipo.png" alt="Forx">
                     </div>
                     <div class="client-name-display">Forx Peças</div>
-                    <div class="client-description">Peças e componentes automotivos</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://doisirmaos.ind.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="https://doisirmaos.ind.br/images/bg_topo_home4.jpg" alt="Grupo 2 Irmãos Pré Moldados">
                     </div>
                     <div class="client-name-display">Grupo 2 Irmãos Pré Moldados</div>
-                    <div class="client-description">Estruturas pré-moldadas</div>
                 </div>
 
                 <div class="client-card">
@@ -391,7 +380,6 @@
                         <img src="https://scontent.ftow4-1.fna.fbcdn.net/v/t39.30808-1/406622538_873611521432142_5470215493173287152_n.jpg?stp=c142.142.1764.1764a_dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=njgh_GI_ucsQ7kNvwHTngee&_nc_oc=AdlxaCr5pflhtdn8R2twujU7uxQLKrVQvjjFsQyk8odQXIlbbi8_bqgDmNapYlT6cGc&_nc_zt=24&_nc_ht=scontent.ftow4-1.fna&_nc_gid=sHuy1GhFblPhlukEV8lrqA&oh=00_Afb4gD6fvkQDZQ4Id1eaQ2P-lPQTsLjRDcVPWxdsYUxXig&oe=68BD4264" alt="Tornearia Pietrobielle">
                     </div>
                     <div class="client-name-display">Tornearia Pietrobielle</div>
-                    <div class="client-description">Serviços de usinagem e tornearia</div>
                 </div>
 
                 <div class="client-card">
@@ -399,7 +387,6 @@
                         <img src="https://academiaironhealth.com.br/wp-content/uploads/2019/05/logo-marca-IRON-Health-Academia-Toledo-PR-1.png" alt="Academia Iron">
                     </div>
                     <div class="client-name-display">Academia Iron Health</div>
-                    <div class="client-description">Centro de treinamento e condicionamento físico</div>
                 </div>
 
                 <div class="client-card">
@@ -407,15 +394,13 @@
                         <img src="https://academiaaquafit.com.br/wp-content/uploads/2018/01/AQUAFIT-Nata_C3_A7_C3_A3o-Hidrogin_C3_A1stica-e-Ac.png" alt="Academia Aquafit">
                     </div>
                     <div class="client-name-display">Academia Aquafit</div>
-                    <div class="client-description">Natação e hidroginástica</div>
                 </div>
 
                 <div class="client-card">
                     <div class="client-logo-container">
-                        <img src="https://academiaindside.com.br/wp-content/uploads/2016/10/ind_logo_retina_branco.png" alt="Academia Indside">
+                        <img src="https://academiaironhealth.com.br/wp-content/uploads/2019/05/academia-ind-side.png" alt="Academia Indside">
                     </div>
                     <div class="client-name-display">Academia Indside</div>
-                    <div class="client-description">Academia de musculação e fitness</div>
                 </div>
 
                 <div class="client-card">
@@ -423,7 +408,6 @@
                         <img src="https://academiaeleven.com.br/wp-content/uploads/2025/08/Design-sem-nome-5-768x284.png" alt="Academia Elevem">
                     </div>
                     <div class="client-name-display">Academia Eleven</div>
-                    <div class="client-description">Centro de treinamento físico</div>
                 </div>
 
                 <!-- Clientes com logos locais -->
@@ -432,15 +416,13 @@
                         <img src="logos/biopar.jpeg" alt="Biopar">
                     </div>
                     <div class="client-name-display">Biopar</div>
-                    <div class="client-description">Empresa do setor biotecnológico</div>
                 </div>
 
-                <div class="client-card">
+                <div class="client-card" onclick="window.open('https://www.cargill.com.br/', '_blank')">
                     <div class="client-logo-container">
                         <img src="logos/cargill.jpeg" alt="Cargill">
                     </div>
                     <div class="client-name-display">Cargill</div>
-                    <div class="client-description">Multinacional do agronegócio</div>
                 </div>
 
                 <div class="client-card">
@@ -448,7 +430,6 @@
                         <img src="logos/hr pre moldados.jpeg" alt="HR Estruturas Metálicas">
                     </div>
                     <div class="client-name-display">HR Estruturas Metálicas</div>
-                    <div class="client-description">Estruturas pré-moldadas e metálicas</div>
                 </div>
 
                 <div class="client-card">
@@ -456,7 +437,6 @@
                         <img src="logos/inovainjet.jpeg" alt="Inovainjet">
                     </div>
                     <div class="client-name-display">Inovainjet</div>
-                    <div class="client-description">Tecnologia e inovação industrial</div>
                 </div>
 
                 <div class="client-card">
@@ -464,7 +444,6 @@
                         <img src="logos/lego construtora.jpeg" alt="Lego Construtora">
                     </div>
                     <div class="client-name-display">Lego Construtora</div>
-                    <div class="client-description">Construção civil e engenharia</div>
                 </div>
 
                 <div class="client-card">
@@ -472,7 +451,6 @@
                         <img src="logos/ls pre moldados.jpeg" alt="LS Pré Moldados">
                     </div>
                     <div class="client-name-display">LS Pré Moldados</div>
-                    <div class="client-description">Estruturas pré-moldadas de concreto</div>
                 </div>
 
                 <div class="client-card">
@@ -480,7 +458,6 @@
                         <img src="logos/pedreira trevo.jpeg" alt="Pedreira Trevo">
                     </div>
                     <div class="client-name-display">Pedreira Trevo</div>
-                    <div class="client-description">Extração e beneficiamento de pedras</div>
                 </div>
 
                 <div class="client-card">
@@ -488,7 +465,6 @@
                         <img src="logos/platar.jpeg" alt="Platar">
                     </div>
                     <div class="client-name-display">Platar</div>
-                    <div class="client-description">Plataformas e equipamentos industriais</div>
                 </div>
 
                 <div class="client-card">
@@ -496,7 +472,6 @@
                         <img src="logos/supermercado paulista.jpeg" alt="Supermercado Paulista">
                     </div>
                     <div class="client-name-display">Supermercado Paulista</div>
-                    <div class="client-description">Rede de supermercados</div>
                 </div>
 
                 <div class="client-card">
@@ -504,7 +479,6 @@
                         <img src="logos/vigano contabilidade.jpeg" alt="Vigano Contabilidade">
                     </div>
                     <div class="client-name-display">Vigano Contabilidade</div>
-                    <div class="client-description">Serviços contábeis e consultoria</div>
                 </div>
             </div>
         </div>
