@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Clientes - Cardoso Segurança do Trabalho</title>
+    <style>
+        :root {
+            --primary-color: #038e3c;
+            --secondary-color: #242c30;
+            --accent-color: #038e3c;
+            --light-color: #e0e0e0;
+            --dark-color: #242c30;
+            --text-color: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #038e3c, #026a2e, #04a347);
+            --gradient-secondary: linear-gradient(135deg, #242c30, #1a1f22);
+            --gradient-luxury: linear-gradient(135deg, #038e3c 0%, #04a347 25%, #026a2e 50%, #038e3c 75%, #04a347 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            --shadow-luxury: 0 25px 50px rgba(3, 142, 60, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 35px 70px rgba(3, 142, 60, 0.25), 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 50%, #f0fdf4 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(3, 142, 60, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(4, 163, 71, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #242c30;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 120px;
+            width: auto;
+            max-width: 400px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .curso-online-btn {
+            background: var(--gradient-primary) !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            box-shadow: 0 2px 10px rgba(3, 142, 60, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .curso-online-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(3, 142, 60, 0.5) !important;
+            background: linear-gradient(135deg, #026a2e, #038e3c) !important;
+        }
+
+        .main-content {
+            padding-top: 140px;
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .page-title p {
+            color: #777;
+            font-size: 1.2rem;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .client-card {
+            background: linear-gradient(145deg, #ffffff, #f8fffe);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-luxury);
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .client-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-glass);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .client-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border: 2px solid rgba(3, 142, 60, 0.3);
+        }
+
+        .client-card:hover::before {
+            opacity: 1;
+        }
+
+        .client-logo-container {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: var(--light-color);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .client-logo-container img {
+            max-height: 80px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .client-logo-container.havan {
+            background-color: #0c3bdd !important;
+        }
+
+        .client-logo-container.havan img {
+            padding: 10px;
+        }
+
+        .client-name-display {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .client-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #026a2e, #038e3c);
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding-top: 160px;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .client-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html"><img src="https://raw.githubusercontent.com/gui3g/cardososst/main/Logotipo.png" alt="Cardoso Segurança do Trabalho" class="logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#services">Serviços</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="index.html#documents">Documentos</a></li>
+                    <li><a href="index.html#norms">Normas (NRs)</a></li>
+                    <li><a href="index.html#about">Sobre Nós</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                    <li><a href="https://clinica.esocialbrasil.com.br/login" target="_blank" class="curso-online-btn">Curso Online</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <a href="index.html" class="back-button">← Voltar ao Início</a>
+            
+            <div class="page-title">
+                <h1>Nossos Clientes</h1>
+                <p>Empresas que confiam na Cardoso Segurança do Trabalho para garantir a segurança de seus colaboradores</p>
+            </div>
+
+            <div class="clients-grid">
+                <!-- Clientes com logos online -->
+                <div class="client-card">
+                    <div class="client-logo-container havan">
+                        <img src="https://www.havan.com.br/static/version1755891299/frontend/Havan/themeDefault/pt_BR/images/svg/logo-havan-slim-w.svg" alt="Havan">
+                    </div>
+                    <div class="client-name-display">Havan</div>
+                    <div class="client-description">Rede de lojas de departamento com presença nacional</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.cvale.com.br/site/web-files/imagens/logos/logo.png" alt="C.Vale">
+                    </div>
+                    <div class="client-name-display">C.Vale</div>
+                    <div class="client-description">Cooperativa agroindustrial</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.redealta.com.br/site/img/logotopo.png" alt="Rede Alta">
+                    </div>
+                    <div class="client-name-display">Rede Alta</div>
+                    <div class="client-description">Rede de supermercados</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.lactobom.com.br/site/img/logotopo.png" alt="Lactobom">
+                    </div>
+                    <div class="client-name-display">Lactobom</div>
+                    <div class="client-description">Indústria de laticínios</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.rawiobrasindustriais.com.br/img/logotopo.png" alt="Rawi">
+                    </div>
+                    <div class="client-name-display">Rawi Obras Industriais</div>
+                    <div class="client-description">Construção e obras industriais</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://agroceresmultimix.com.br/public/images/svgs/logo.svg" alt="Agroceres">
+                    </div>
+                    <div class="client-name-display">Agroceres Multimix</div>
+                    <div class="client-description">Nutrição animal</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.schemaq.com.br/wp-content/uploads/2022/02/logo-schemaq-verde-e-preto-300x37.png" alt="Schemaq">
+                    </div>
+                    <div class="client-name-display">Schemaq</div>
+                    <div class="client-description">Equipamentos industriais</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://www.forxpecas.com.br/webfiles/img/logotipo.png" alt="Forx">
+                    </div>
+                    <div class="client-name-display">Forx Peças</div>
+                    <div class="client-description">Peças e componentes automotivos</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://doisirmaos.ind.br/images/bg_topo_home4.jpg" alt="Grupo 2 Irmãos Pré Moldados">
+                    </div>
+                    <div class="client-name-display">Grupo 2 Irmãos Pré Moldados</div>
+                    <div class="client-description">Estruturas pré-moldadas</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://scontent.ftow4-1.fna.fbcdn.net/v/t39.30808-1/406622538_873611521432142_5470215493173287152_n.jpg?stp=c142.142.1764.1764a_dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=njgh_GI_ucsQ7kNvwHTngee&_nc_oc=AdlxaCr5pflhtdn8R2twujU7uxQLKrVQvjjFsQyk8odQXIlbbi8_bqgDmNapYlT6cGc&_nc_zt=24&_nc_ht=scontent.ftow4-1.fna&_nc_gid=sHuy1GhFblPhlukEV8lrqA&oh=00_Afb4gD6fvkQDZQ4Id1eaQ2P-lPQTsLjRDcVPWxdsYUxXig&oe=68BD4264" alt="Tornearia Pietrobielle">
+                    </div>
+                    <div class="client-name-display">Tornearia Pietrobielle</div>
+                    <div class="client-description">Serviços de usinagem e tornearia</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://academiaironhealth.com.br/wp-content/uploads/2019/05/logo-marca-IRON-Health-Academia-Toledo-PR-1.png" alt="Academia Iron">
+                    </div>
+                    <div class="client-name-display">Academia Iron Health</div>
+                    <div class="client-description">Centro de treinamento e condicionamento físico</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://academiaaquafit.com.br/wp-content/uploads/2018/01/AQUAFIT-Nata_C3_A7_C3_A3o-Hidrogin_C3_A1stica-e-Ac.png" alt="Academia Aquafit">
+                    </div>
+                    <div class="client-name-display">Academia Aquafit</div>
+                    <div class="client-description">Natação e hidroginástica</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://academiaindside.com.br/wp-content/uploads/2016/10/ind_logo_retina_branco.png" alt="Academia Indside">
+                    </div>
+                    <div class="client-name-display">Academia Indside</div>
+                    <div class="client-description">Academia de musculação e fitness</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="https://academiaeleven.com.br/wp-content/uploads/2025/08/Design-sem-nome-5-768x284.png" alt="Academia Elevem">
+                    </div>
+                    <div class="client-name-display">Academia Eleven</div>
+                    <div class="client-description">Centro de treinamento físico</div>
+                </div>
+
+                <!-- Clientes com logos locais -->
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/biopar.jpeg" alt="Biopar">
+                    </div>
+                    <div class="client-name-display">Biopar</div>
+                    <div class="client-description">Empresa do setor biotecnológico</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/cargill.jpeg" alt="Cargill">
+                    </div>
+                    <div class="client-name-display">Cargill</div>
+                    <div class="client-description">Multinacional do agronegócio</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/hr pre moldados.jpeg" alt="HR Estruturas Metálicas">
+                    </div>
+                    <div class="client-name-display">HR Estruturas Metálicas</div>
+                    <div class="client-description">Estruturas pré-moldadas e metálicas</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/inovainjet.jpeg" alt="Inovainjet">
+                    </div>
+                    <div class="client-name-display">Inovainjet</div>
+                    <div class="client-description">Tecnologia e inovação industrial</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/lego construtora.jpeg" alt="Lego Construtora">
+                    </div>
+                    <div class="client-name-display">Lego Construtora</div>
+                    <div class="client-description">Construção civil e engenharia</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/ls pre moldados.jpeg" alt="LS Pré Moldados">
+                    </div>
+                    <div class="client-name-display">LS Pré Moldados</div>
+                    <div class="client-description">Estruturas pré-moldadas de concreto</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/pedreira trevo.jpeg" alt="Pedreira Trevo">
+                    </div>
+                    <div class="client-name-display">Pedreira Trevo</div>
+                    <div class="client-description">Extração e beneficiamento de pedras</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/platar.jpeg" alt="Platar">
+                    </div>
+                    <div class="client-name-display">Platar</div>
+                    <div class="client-description">Plataformas e equipamentos industriais</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/supermercado paulista.jpeg" alt="Supermercado Paulista">
+                    </div>
+                    <div class="client-name-display">Supermercado Paulista</div>
+                    <div class="client-description">Rede de supermercados</div>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-container">
+                        <img src="logos/vigano contabilidade.jpeg" alt="Vigano Contabilidade">
+                    </div>
+                    <div class="client-name-display">Vigano Contabilidade</div>
+                    <div class="client-description">Serviços contábeis e consultoria</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cardoso Segurança do Trabalho. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
