@@ -374,11 +374,17 @@
 
         .contact-info-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
         }
 
         @media (max-width: 768px) {
+            .contact-info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
             .contact-info-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -574,6 +580,21 @@
             height: auto;
             border-radius: 0;
             border: none;
+        }
+
+        .icon.instagram {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/174/174855.png');
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icon.instagram::before {
+            content: '';
+            background: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
         }
         
         .contact-info h3 {
@@ -1221,9 +1242,7 @@
                     <li><a href="clientes.html">Clientes</a></li>
                     <li><a href="#documents">Documentos</a></li>
                     <li><a href="#norms">Normas (NRs)</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#contact">Contato</a></li>
-                    <li><a href="https://www.instagram.com/cardosotst/" target="_blank" style="color: #E4405F;">📷 Instagram</a></li>
                     <li><a href="https://clinica.esocialbrasil.com.br/login" target="_blank" class="curso-online-btn">Curso Online</a></li>
                 </ul>
             </nav>
@@ -1534,38 +1553,6 @@
         </div>
     </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre a Cardoso Segurança do Trabalho</h2>
-                <p>Especialistas em segurança do trabalho com anos de experiência no mercado</p>
-                <div class="section-divider"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Quem Somos</h3>
-                    <p>A Cardoso Segurança do Trabalho é uma empresa especializada em soluções completas para segurança e saúde ocupacional. Com anos de experiência no mercado, oferecemos serviços de alta qualidade para empresas de todos os portes e segmentos.</p>
-                    
-                    <p>Nossa equipe é formada por profissionais altamente qualificados e certificados, que trabalham com dedicação para garantir a conformidade legal e a proteção dos trabalhadores em seus ambientes laborais.</p>
-                    
-                    <p>Atendemos empresas em Toledo-PR e região, oferecendo desde consultoria especializada até treinamentos presenciais e online, sempre com foco na excelência e na satisfação de nossos clientes.</p>
-                    
-                    <h3>Nossos Diferenciais</h3>
-                    <ul>
-                        <li>✓ Equipe técnica especializada e certificada</li>
-                        <li>✓ Atendimento personalizado para cada cliente</li>
-                        <li>✓ Treinamentos presenciais e online</li>
-                        <li>✓ Documentação técnica completa</li>
-                        <li>✓ Acompanhamento contínuo e suporte técnico</li>
-                        <li>✓ Conformidade com todas as normas regulamentadoras</li>
-                    </ul>
-                </div>
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipe Cardoso Segurança do Trabalho">
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="clients" class="clients">
         <div class="container">
@@ -1811,6 +1798,13 @@
                         <div>
                             <h4>Horário</h4>
                             <p>Seg - Sex: 8h às 18h</p>
+                        </div>
+                    </div>
+                    <div class="contact-item clickable" onclick="window.open('https://www.instagram.com/cardosotst/', '_blank')">
+                        <div class="icon instagram"></div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p>@cardosotst</p>
                         </div>
                     </div>
                 </div>
